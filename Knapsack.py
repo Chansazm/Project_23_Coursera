@@ -1,14 +1,15 @@
+#Goal: maximize value while limiting total weight
 T = {}
 def Knapsack(w,v,u):
     #Check if unit already in bag and initialize
     if u not in T:
         T[u] = 0
-    #Check all the weights in range of w
+    #Check all the weights in range of w and Recursively call knapsack
         for i in range(len(w)):
             if w[i] <= u:
                 T[u] = max(T[u],Knapsack(w,v,u-w[i])+v[i])
-    
-    #Recursively call knapsack and store results in the bag
+                
+    #Store results in the dictionary
     return T[u]
 
 
